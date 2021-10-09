@@ -6,7 +6,7 @@ module.exports = class BoundCommand extends Command {
     super('bound', {
       aliases: ['bound'],
       description: {
-        content: 'bound music channel',
+        content: 'Setze einen Musik channel',
       },
       category: 'Music',
       cooldown: 3000,

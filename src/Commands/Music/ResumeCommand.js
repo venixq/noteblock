@@ -6,7 +6,7 @@ module.exports = class ResumeCommand extends Command {
     super('resume', {
       aliases: ['resume', 'r'],
       description: {
-        content: 'Resume current track',
+        content: 'Setze die Queue Fort',
       },
       category: 'Music',
       cooldown: 3000,

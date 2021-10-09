@@ -8,7 +8,7 @@ module.exports = class QueueCommand extends Command {
     super('queue', {
       aliases: ['queue', 'q'],
       description: {
-        content: 'get current guild queue',
+        content: 'Bekomme die jetzige Queue',
       },
       category: 'Music',
       cooldown: 3000,

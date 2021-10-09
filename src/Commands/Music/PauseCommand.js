@@ -6,7 +6,7 @@ module.exports = class PauseCommand extends Command {
     super('pause', {
       aliases: ['pause'],
       description: {
-        content: 'Pause current track',
+        content: 'Pausiere den jetztigen Song',
       },
       category: 'Music',
       cooldown: 3000,

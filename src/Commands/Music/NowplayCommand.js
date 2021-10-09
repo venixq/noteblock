@@ -7,7 +7,7 @@ module.exports = class NowPlayCommand extends Command {
     super('nowplay', {
       aliases: ['nowplay', 'np'],
       description: {
-        content: 'Get the current playing',
+        content: 'Bekomme denn jetzigen Musik Titel',
       },
       category: 'Music',
       cooldown: 3000,

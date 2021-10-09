@@ -6,7 +6,7 @@ module.exports = class SkipCommand extends Command {
     super('skip', {
       aliases: ['skip', 's'],
       description: {
-        content: 'Skip current playing track',
+        content: 'Übersrpinge den jetzigen Song',
       },
       category: 'Music',
       cooldown: 3000,

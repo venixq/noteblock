@@ -6,7 +6,7 @@ module.exports = class VolumeCommand extends Command {
     super('Volume', {
       aliases: ['Volume'],
       description: {
-        content: 'Change music volume',
+        content: 'Ändere die Lautstärke',
       },
       category: 'Music',
       cooldown: 3000,

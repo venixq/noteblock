@@ -6,7 +6,7 @@ module.exports = class StopCommand extends Command {
     super('stop', {
       aliases: ['stop'],
       description: {
-        content: 'Stop playing music',
+        content: 'Stope denn jetzigen Song',
       },
       category: 'Music',
       cooldown: 3000,
