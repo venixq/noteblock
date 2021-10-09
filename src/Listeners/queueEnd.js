@@ -11,7 +11,7 @@ module.exports = class queueEnd extends Listener {
 
   exec(player) {
     const QueueChannel = this.client.channels.cache.get(player.textChannel);
-    QueueChannel.send({ embeds: [CreateEmbed('info', '⏹  | queue has ended.')] });
+    QueueChannel.send({ embeds: [CreateEmbed('info', '⏹  | Die queue ist zuende.')] });
     player.destroy();
   }
 };

@@ -7,7 +7,7 @@ module.exports = class PingCommand extends Command {
     super('help', {
       aliases: ['help'],
       description: {
-        content: 'Gets the bot\'s help command',
+        content: 'Sendet die Commands des Bots',
       },
       category: 'Util',
       cooldown: 3000,
@@ -24,20 +24,20 @@ module.exports = class PingCommand extends Command {
     try {
       if (!command) {
         const embed = CreateEmbed('info')
-          .addField(`${this.client.user.username} command's`, `${this.client.config.prefix}help [command]`);
+          .addField(`${this.client.user.username} Command liste`, `${this.client.config.prefix}help [command]`);
         for (const category of this.handler.categories.values()) {
           embed.addField(String(category), `${category.filter((cmd) => cmd.aliases.length > 0).map((cmd) => `\`${cmd.aliases[0]}\``).join(', ')}`);
         }
         return msg.channel.send({ embeds: [embed] });
       }
       const embed = CreateEmbed('info')
-        .addField('Description', `${command.description.content ? command.description.content : 'None'} ${command.description.ownerOnly ? '\n**[Owner Only]**' : '[Public Use]'}`)
+        .addField('Beschreibung', `${command.description.content ? command.description.content : 'None'} ${command.description.ownerOnly ? '\n**[Nicht offen nutzbar]**' : '[Offen nutzbar]'}`)
         .addField('Alias', command.aliases.length > 1 ? `\`${command.aliases.join('` `')}\`` : 'None.', true)
-        .addField('Examples', command.description.examples && command.description.examples.length ? `\`${command.aliases[0]} ${command.description.examples.join(`\`\n\`${command.aliases[0]} `)}\`` : 'None.');
+        .addField('Beispiele', command.description.examples && command.description.examples.length ? `\`${command.aliases[0]} ${command.description.examples.join(`\`\n\`${command.aliases[0]} `)}\`` : 'None.');
       return msg.channel.send({ embeds: [embed] });
     } catch (e) {
       this.client.logger.error(e.message);
-      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | An error occured')] });
+      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | Ein Fehler ist aufgetreten')] });
     }
   }
 };

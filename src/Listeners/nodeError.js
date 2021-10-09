@@ -9,6 +9,6 @@ module.exports = class nodeError extends Listener {
   }
 
   exec(node, error) {
-    this.client.logger.warn(`NODE [${node.options.identifier}] ERROR`, error);
+    this.client.logger.warn(`Node [${node.options.identifier}] Fehler`, error);
   }
 };

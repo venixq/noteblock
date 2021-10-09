@@ -10,7 +10,7 @@ module.exports = class StatsCommand extends Command {
     super('stats', {
       aliases: ['stats'],
       description: {
-        content: 'Gets the bot\'s statistic',
+        content: 'Sendet die Statistiken des Bots',
       },
       category: 'Util',
       cooldown: 3000,
@@ -29,16 +29,11 @@ Version: ${version}
 Uptime: ${ms(this.client.uptime, { long: true })}
 Discord.js: ${Discord.version}
 \`\`\`
-Music Statistics:
-\`\`\`css
-Uptime: ${ms(this.client.erela.nodes.values().next().value.stats.uptime, { long: true })}
-Playing Players: ${this.client.erela.nodes.values().next().value.stats.playingPlayers}
-\`\`\`
 `)],
       });
     } catch (e) {
       this.client.logger.error(e.message);
-      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | An error occured')] });
+      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | Ein Fehler ist aufgetreten')] });
     }
   }
 };

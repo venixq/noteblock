@@ -6,7 +6,7 @@ module.exports = class PingCommand extends Command {
     super('ping', {
       aliases: ['ping'],
       description: {
-        content: 'Gets the bot\'s heartbeat and latency',
+        content: 'Sendet die Verbindung des Bots',
       },
       category: 'Util',
       cooldown: 3000,
@@ -15,7 +15,7 @@ module.exports = class PingCommand extends Command {
 
   async exec(msg) {
     try {
-      const message = await msg.channel.send('Getting info...');
+      const message = await msg.channel.send('Bekomme Informationen...');
       const embed = CreateEmbed('info')
         .addField('⏳ Latency ', `__**${message.createdTimestamp - msg.createdTimestamp}ms**__`)
         .addField('💓 API', `__**${Math.floor(this.client.ws.ping)}ms**__`)
@@ -23,7 +23,7 @@ module.exports = class PingCommand extends Command {
       setTimeout(() => { message.edit({ content: null, embeds: [embed] }); }, 5000);
     } catch (e) {
       this.client.logger.error(e.message);
-      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | An error occured')] });
+      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | Ein Fehler ist aufgetreten')] });
     }
   }
 };

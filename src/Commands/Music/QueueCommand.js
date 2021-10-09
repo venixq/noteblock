@@ -18,15 +18,15 @@ module.exports = class QueueCommand extends Command {
   async exec(msg) {
     try {
       const GuildPlayers = this.client.erela.players.get(msg.guild.id);
-      if (!GuildPlayers) return msg.channel.send({ embeds: [CreateEmbed('info', '⛔ | There no music playing in this guild')] });
+      if (!GuildPlayers) return msg.channel.send({ embeds: [CreateEmbed('info', '⛔ | Es spielt gerade keine Musik')] });
       if (GuildPlayers.queue.size < 1) {
         return msg.reply({
           embeds: [CreateEmbed('info', `
-            NowPlaying:
+            Jetzt Spielt:
             \`\`\`css
             ${GuildPlayers?.queue.current?.title} | [${GuildPlayers?.queue.current?.requester.username}]
             \`\`\`
-            Next Track:
+            Nächster Song:
             \`\`\`css
             ${GuildPlayers?.queue.values().next().value ? `${GuildPlayers.queue.values().next().value.title} | [${GuildPlayers.queue.values().next().value.requester.username}]` : 'None.'}
             \`\`\`
@@ -34,7 +34,7 @@ module.exports = class QueueCommand extends Command {
         });
       }
       const pages = chunk(GuildPlayers?.queue.map((x, i) => `\`${i + 1}\` ${x.title} [${x.requester}]`), 7);
-      const embed = CreateEmbed('info').setAuthor(`${msg.guild?.name} queue list`, msg.guild.iconURL());
+      const embed = CreateEmbed('info').setAuthor(`${msg.guild?.name} Queue Liste`, msg.guild.iconURL());
       await new Pagination(msg, {
         pages,
         embed,
@@ -43,7 +43,7 @@ module.exports = class QueueCommand extends Command {
       }).start();
     } catch (e) {
       this.client.logger.error(e.message);
-      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | An error occured')] });
+      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | Ein Fehler ist aufgetreten')] });
     }
   }
 };

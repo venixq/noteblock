@@ -9,7 +9,7 @@ module.exports = class playerMove extends Listener {
   }
 
   async exec(player, oldChannel, newChannel) {
-    this.client.logger.info(newChannel ? `PLAYER MOVED TO [${newChannel}]` : 'SOMEONE DISCONNECTED ME FROM VOICECHANNEL');
+    this.client.logger.info(newChannel ? `Der nutzer hat den channel zu [${newChannel}] gewechselt` : 'Jemand hat mich aus dem channel geworfen');
     /* eslint no-param-reassign: "off" */
     try {
       player.setVoiceChannel(newChannel ?? player.voiceChannel);

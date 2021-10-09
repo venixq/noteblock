@@ -9,6 +9,6 @@ module.exports = class nodeDestroy extends Listener {
   }
 
   exec(node) {
-    this.client.logger.warn(`NODE [${node.options.identifier}] DESTROYED`);
+    this.client.logger.warn(`Node [${node.options.identifier}] Zerstört`);
   }
 };

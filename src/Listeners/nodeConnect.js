@@ -9,6 +9,6 @@ module.exports = class nodeConnect extends Listener {
   }
 
   exec(node) {
-    this.client.logger.info(`NODE [${node.options.identifier}] CONNECTED`);
+    this.client.logger.info(`Node [${node.options.identifier}] Verbunden`);
   }
 };

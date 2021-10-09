@@ -16,8 +16,8 @@ module.exports = class VolumeCommand extends Command {
           type: Argument.range('number', 1, 101),
           match: 'rest',
           prompt: {
-            start: 'What new volume you want to change? between 1-100',
-            retry: 'between 1-100',
+            start: 'Welche Lautstärke möchtest du haben, wähle von 1-100 aus',
+            retry: 'von 1-100',
           },
         },
       ],
@@ -27,14 +27,14 @@ module.exports = class VolumeCommand extends Command {
   async exec(msg, { volume }) {
     try {
       const GuildPlayers = this.client.erela.players.get(msg.guild.id);
-      if (!GuildPlayers) return msg.channel.send({ embeds: [CreateEmbed('info', '⛔ | There no music playing in this guild')] });
-      if (!msg.member.voice.channelId) return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | you must join voice channel to do this.')] });
-      if (msg.member.voice.channelId !== GuildPlayers.voiceChannel) return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | you must join voice channel same as me to do this.')] });
+      if (!GuildPlayers) return msg.channel.send({ embeds: [CreateEmbed('info', '⛔ | Es spielt gerade keine Musik.')] });
+      if (!msg.member.voice.channelId) return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | Du musst einem voice channel joinen.')] });
+      if (msg.member.voice.channelId !== GuildPlayers.voiceChannel) return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | Du musst im gleichen channel sein wie ich.')] });
       GuildPlayers.setVolume(volume);
-      return msg.channel.send({ embeds: [CreateEmbed('info', `👌 | Set guild volume to \`${volume}\``)] });
+      return msg.channel.send({ embeds: [CreateEmbed('info', `👌 | Lautsträke auf \`${volume}\` gesetzt`)] });
     } catch (e) {
       this.client.logger.error(e.message);
-      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | An error occured')] });
+      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | Ein fehler ist aufgetreten')] });
     }
   }
 };
